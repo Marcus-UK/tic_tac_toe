@@ -2,11 +2,15 @@ require './lib/game.rb'
 
 describe Game do
   subject(:game) { described_class.new}
+  let(:board_dbl) {double :board, :grid => [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]}
+   let(:player1_dbl) { double :player1, :name => 'Tic Tac King' }
+   let(:player2_dbl) { double :player2, :name => 'Tic Tac Woe' }
+    subject(:game) { described_class.new(board_dbl, player1_dbl, player2_dbl)}
 
-
-  it 'is instantiated with a game board' do
-    expect(game.board).to be_instance_of(Board)
-  end
+   it 'can return the names of instantiated players' do
+     expect(game.player1.name).to eq "Tic Tac King"
+     expect(game.player2.name).to eq "Tic Tac Woe"
+   end
 
   describe '#place_game_piece' do
 
