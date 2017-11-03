@@ -19,5 +19,10 @@ describe Game do
       game.place_game_piece('O', 0, 0)
       expect(game.board.grid[0][0]).to eq('O')
     end
+
+    it 'doesn\'t allow you to place a game piece on an occupied space' do
+      game.place_game_piece('X', 0, 0)
+      expect(game.place_game_piece('O', 0, 0)).to eq "That place is already taken"
+    end
   end
 end

@@ -3,7 +3,7 @@ class Board
 attr_reader :grid
 
   def initialize
-    @grid = Array.new(3){Array.new(3, " ")}
+    @grid = Array.new(3){Array.new(3, nil)}
   end
 
   def show_board

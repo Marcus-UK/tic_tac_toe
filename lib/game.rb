@@ -11,8 +11,13 @@ attr_reader :board
 
 
   def place_game_piece(piece, row, column)
-    @board.grid[row][column] = piece
+      @board.grid[row][column] = piece if !space_occupied?(row, column)
+      return 'That place is already taken'
   end
 
+private
 
+  def space_occupied?(row, column)
+    @board.grid[row][column].class == String
+  end
 end
