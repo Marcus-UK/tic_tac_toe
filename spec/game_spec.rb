@@ -1,7 +1,6 @@
 require './lib/game.rb'
 
 describe Game do
-  subject(:game) { described_class.new}
   let(:board_dbl) {double :board, :grid => [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]}
    let(:player1_dbl) { double :player1, :name => 'Tic Tac King' }
    let(:player2_dbl) { double :player2, :name => 'Tic Tac Woe' }
@@ -10,6 +9,10 @@ describe Game do
    it 'can return the names of instantiated players' do
      expect(game.player1.name).to eq "Tic Tac King"
      expect(game.player2.name).to eq "Tic Tac Woe"
+   end
+
+   it 'starts off waiting for player 1 to place a piece' do
+     expect(game.current_player).to eq(player1_dbl)
    end
 
   describe '#place_game_piece' do
