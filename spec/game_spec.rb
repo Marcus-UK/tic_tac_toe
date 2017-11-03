@@ -24,5 +24,9 @@ describe Game do
       game.place_game_piece('X', 0, 0)
       expect(game.place_game_piece('O', 0, 0)).to eq "That place is already taken"
     end
+
+    it 'doesn\'t allow you to place a piece off the edge of the board' do
+      expect(game.place_game_piece('X', 3, 0)).to eq "That isn't on the board!"
+    end
   end
 end
