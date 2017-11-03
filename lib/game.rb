@@ -1,4 +1,5 @@
 require_relative 'board.rb'
+require_relative 'player.rb'
 
 class Game
 
@@ -12,4 +13,6 @@ attr_reader :board
   def place_game_piece(piece, row, column)
     @board.grid[row][column] = piece
   end
+
+
 end

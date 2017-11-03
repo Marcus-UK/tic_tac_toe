@@ -10,9 +10,14 @@ describe Game do
 
   describe '#place_game_piece' do
 
-    it 'places a piece on the board' do
+    it 'places an X on the board' do
       game.place_game_piece('X', 0, 0)
       expect(game.board.grid[0][0]).to eq('X')
+    end
+
+    it 'places an O on the board' do
+      game.place_game_piece('O', 0, 0)
+      expect(game.board.grid[0][0]).to eq('O')
     end
   end
 end
