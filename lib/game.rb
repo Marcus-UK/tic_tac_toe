@@ -13,6 +13,10 @@ attr_reader :board , :player1, :player2, :current_player
     @current_player = player1
   end
 
+  def board_state
+    @board.show_board
+  end
+
 
   def place_game_piece(piece, row, column)
       return 'That isn\'t on the board!' if off_board(row, column)

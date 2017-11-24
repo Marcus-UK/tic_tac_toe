@@ -1,7 +1,8 @@
 require './lib/game.rb'
 
 describe Game do
-  let(:board_dbl) {double :board, :grid => [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]}
+  let(:board_dbl) {double :board, :grid => [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]],
+   :show_board => "[[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]"}
    let(:player1_dbl) { double :player1, :name => 'Tic Tac King' }
    let(:player2_dbl) { double :player2, :name => 'Tic Tac Woe' }
     subject(:game) { described_class.new(board_dbl, player1_dbl, player2_dbl)}
@@ -14,6 +15,13 @@ describe Game do
    it 'starts off waiting for player 1 to place a piece' do
      expect(game.current_player).to eq(player1_dbl)
    end
+
+  describe '#board_state' do
+
+    it 'shows the current state of the game board' do
+      expect(game.board_state).to eq "[[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]"
+    end
+  end
 
   describe '#place_game_piece' do
 
