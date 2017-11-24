@@ -3,8 +3,8 @@ require './lib/game.rb'
 describe Game do
   let(:board_dbl) {double :board, :grid => [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]],
    :show_board => "[[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]"}
-   let(:player1_dbl) { double :player1, :name => 'Tic Tac King' }
-   let(:player2_dbl) { double :player2, :name => 'Tic Tac Woe' }
+   let(:player1_dbl) { double :player1, :name => 'Tic Tac King', :piece => 'X' }
+   let(:player2_dbl) { double :player2, :name => 'Tic Tac Woe', :piece => 'O' }
     subject(:game) { described_class.new(board_dbl, player1_dbl, player2_dbl)}
 
    it 'can return the names of instantiated players' do
@@ -29,14 +29,14 @@ describe Game do
 
   describe '#place_game_piece' do
 
-    it 'places an X on the board' do
-      game.place_game_piece('X', 0, 0)
+    it 'places the current players piece on the board' do
+      game.place_game_piece(0, 0)
       expect(game.board.grid[0][0]).to eq('X')
     end
 
-    it 'places an O on the board' do
-      game.place_game_piece('O', 0, 0)
-      expect(game.board.grid[0][0]).to eq('O')
+    it 'swaps the current player after a piece has been placed' do
+      game.place_game_piece(0, 0)
+      expect(game.current_player).to eq player2_dbl
     end
 
     it 'doesn\'t allow you to place a game piece on an occupied space' do
