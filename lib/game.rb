@@ -3,14 +3,15 @@ require_relative 'player.rb'
 
 class Game
 
-attr_reader :board , :player1, :player2, :current_player
+attr_reader :board , :player1, :player2, :current_player, :turn
 
-  def initialize(board = Board.new , player1 = Player.new('Tic Tac King'),
-                 player2 = Player.new('Tic Tac Woe'))
+  def initialize(board = Board.new , player1 = Player.new('Tic Tac King', 'X'),
+                 player2 = Player.new('Tic Tac Woe', 'O'))
     @board = board
     @player1 = player1
     @player2 = player2
     @current_player = player1
+    @turn = 0
   end
 
   def board_state

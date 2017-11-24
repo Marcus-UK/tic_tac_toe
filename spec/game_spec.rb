@@ -16,6 +16,10 @@ describe Game do
      expect(game.current_player).to eq(player1_dbl)
    end
 
+   it 'starts at turn 0' do
+     expect(game.turn).to eq 0
+   end
+
   describe '#board_state' do
 
     it 'shows the current state of the game board' do
